@@ -1,3 +1,35 @@
+# Git Flow Workflow
+
+Dit project gebruikt **Git Flow** als branching-strategie. Git Flow helpt ons om features, releases en hotfixes gestructureerd te beheren.
+
+## Branches
+
+In Git Flow zijn er een paar vaste branches:
+
+- **main**  
+  Bevat altijd de productierijpe code. Alles op `main` is **stabiel** en kan gedeployed worden.
+
+- **develop**  
+  Bevat de laatste ontwikkelstatus. Nieuwe features worden hier samengevoegd.
+
+Daarnaast worden tijdelijke branches gebruikt:
+
+- **feature/**  
+  Voor nieuwe functionaliteiten.  
+  Naamgeving: `feature/omschrijving`  
+  → Gebaseerd op `develop` en wordt terug gemerged in `develop`.
+
+- **release/**  
+  Voor het voorbereiden van een nieuwe release (bugfixes, documentatie, kleine aanpassingen).  
+  Naamgeving: `release/x.y.z`  
+  → Gebaseerd op `develop` en wordt gemerged in zowel `main` als `develop`.
+
+- **hotfix/**  
+  Voor urgente fixes op productie.  
+  Naamgeving: `hotfix/x.y.z`  
+  → Gebaseerd op `main` en wordt gemerged in zowel `main` als `develop`.
+
+
 #GroceryApp sprint5 Studentversie  
 Dit is de startversie voor studenten voor sprint 5.  
  
