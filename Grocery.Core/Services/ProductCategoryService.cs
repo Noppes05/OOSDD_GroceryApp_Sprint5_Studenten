@@ -17,5 +17,9 @@ namespace Grocery.Core.Services
             _productCategoryService = productCategoryService;
         }
 
+        public List<Models.ProductCatergory> GetAll(int id)
+        {
+            return _productCategoryService.GetAll(id);
+        }
     }
 }

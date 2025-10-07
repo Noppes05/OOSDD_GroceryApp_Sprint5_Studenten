@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Grocery.Core.Interfaces.Services
 {
-    public interface ICategorySevice
+    public interface ICategoryService
     {
         public List<Category> getAll();
     }

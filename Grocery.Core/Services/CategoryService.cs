@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Grocery.Core.Services
 {
-    public class CategoryService: ICategorySevice
+    public class CategoryService: ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
         public CategoryService(ICategoryRepository categoryrepository) {

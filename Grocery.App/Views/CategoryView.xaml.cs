@@ -9,4 +9,23 @@ public partial class CategoryView : ContentPage
 		InitializeComponent();
 		BindingContext = viewmodel;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (BindingContext is CategoryViewmodel bindingContext)
+        {
+            bindingContext.OnAppearing();
+
+        }
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        if (BindingContext is CategoryViewmodel bindingContext)
+        {
+            bindingContext.OnDisappearing();
+        }
+    }
 }

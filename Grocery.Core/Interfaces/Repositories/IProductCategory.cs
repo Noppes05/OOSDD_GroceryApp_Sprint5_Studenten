@@ -8,6 +8,7 @@ namespace Grocery.Core.Interfaces.Repositories
 {
     public interface IProductCategory
     {
+        public List<Models.ProductCatergory> GetAll(int id);
 
     }
 }

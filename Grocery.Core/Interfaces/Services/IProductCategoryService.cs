@@ -8,5 +8,6 @@ namespace Grocery.Core.Interfaces.Services
 {
     public interface IProductCategoryService
     {
+        public List<Models.ProductCatergory> GetAll(int id);
     }
 }

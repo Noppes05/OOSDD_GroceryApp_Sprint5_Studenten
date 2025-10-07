@@ -23,5 +23,9 @@ namespace Grocery.Core.Data.Repositories
             };
             ;
         }
+        public List<ProductCatergory> GetAll(int id)
+        {
+            return productCategories.Where(pc => pc.CategoryId == id).ToList();
+        }
     }
 }

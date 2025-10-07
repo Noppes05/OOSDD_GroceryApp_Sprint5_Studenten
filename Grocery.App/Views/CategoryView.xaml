@@ -3,10 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Grocery.App.Views.CategoryView"
              Title="Categorie">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <CollectionView ItemsSource="{Binding Categories}" Margin="20" HorizontalOptions="Center" 
+                    SelectionMode="Single"
+SelectionChangedCommand="{Binding SelectCategoryCommand}"
+SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Naam van de categorie" Grid.Column="0" FontAttributes="Bold"/>
+                <Label Text="Beschrijving" Grid.Column="1" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+                <Label Text="Aantal producten" Grid.Column="2" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+            </Grid>
+        </CollectionView.Header>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="{Binding Name}"/>
+                    <Label Grid.Column="1" Text="{Binding Description}" HorizontalOptions="End"/>   
+                    <Label Grid.Column="2" Text="{Binding ProductCount, StringFormat='{}{0:F0} producten'}" HorizontalOptions="End">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding ProductCount}" Value="0">
+                                <Setter Property="Text" Value="geen producten" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
