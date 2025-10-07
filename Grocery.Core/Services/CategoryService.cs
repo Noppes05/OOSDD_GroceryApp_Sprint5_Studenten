@@ -1,0 +1,24 @@
+﻿using Grocery.Core.Interfaces.Repositories;
+using Grocery.Core.Interfaces.Services;
+using Grocery.Core.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Grocery.Core.Services
+{
+    public class CategoryService: ICategorySevice
+    {
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryService(ICategoryRepository categoryrepository) {
+        _categoryRepository = categoryrepository;
+        }
+
+        public List<Category> getAll()
+        {
+            return _categoryRepository.GetAll();
+        }
+    }
+}
