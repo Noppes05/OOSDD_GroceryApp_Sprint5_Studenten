@@ -16,33 +16,28 @@ namespace Grocery.App.ViewModels
     public partial class ProductCategoryViewmodel : BaseViewModel
     {
         private readonly IProductCategoryService _productCategoryService;
-        public ObservableCollection<ProductCatergory> ProductCategories { get; set; } = [];
+        public ObservableCollection<Product> ProductByCategories { get; set; } = [];
         [ObservableProperty]
-        private Category category = new(0,"");
+        private Category category = new(-1000, "hoerenzooi");
+
         public ProductCategoryViewmodel(IProductCategoryService productCategoryService)
         {
             _productCategoryService = productCategoryService;
-            Load();
         }
 
         private void Load()
         {
-            if (category == null) return;
-            ProductCategories.Clear();
-            foreach (ProductCatergory pc in _productCategoryService.GetAll(category.Id)) ProductCategories.Add(pc);
+            if (Category == null) return;
+            ProductByCategories.Clear();
+            var productCategories = _productCategoryService.GetAll(Category.Id);
+            foreach (var productCategory in productCategories)
+                ProductByCategories.Add(productCategory);
         }
-        public override void OnAppearing()
+       
+        partial void OnCategoryChanged(Category value)
         {
-            base.OnAppearing();
-            ProductCategories = new(_productCategoryService.GetAll(category.Id));
+            Load();
         }
-
-        public override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            ProductCategories.Clear();
-        }
-
 
     }
 }

@@ -33,7 +33,7 @@ SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=Se
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Text="{Binding Name}"/>
                     <Label Grid.Column="1" Text="{Binding Description}" HorizontalOptions="End"/>   
-                    <Label Grid.Column="2" Text="{Binding ProductCount, StringFormat='{}{0:F0} producten'}" HorizontalOptions="End">
+                    <Label Grid.Column="2" Text="{}" HorizontalOptions="End">
                         <Label.Triggers>
                             <DataTrigger TargetType="Label" Binding="{Binding ProductCount}" Value="0">
                                 <Setter Property="Text" Value="geen producten" />
