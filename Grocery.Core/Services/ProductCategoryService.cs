@@ -20,13 +20,18 @@ namespace Grocery.Core.Services
             _productService = productService;
         }
 
+        /// <summary>
+        /// Gets all products associated with a specific category ID.
+        /// </summary>
+        /// <param name="id">The ID of the category.</param>
         public List<Product> GetAll(int id)
         {
             var result = _productCategoryService.GetAll(id);
             List<Product> products = new List<Models.Product>();
             foreach (ProductCatergory item in result)
             {
-                Product product = _productService.Get(item.ProductId);
+                //finding products by their product id
+                Product? product = _productService.Get(item.ProductId);
                 if (product != null)
                     products.Add(product);
             }

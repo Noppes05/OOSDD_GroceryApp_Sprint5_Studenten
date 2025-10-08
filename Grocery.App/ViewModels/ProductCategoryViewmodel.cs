@@ -35,19 +35,22 @@ namespace Grocery.App.ViewModels
             LoadProductsByCategory();
             LoadAvailableProducts();
         }
-        
+          
         private void LoadProductsByCategory()
         {
             if (Category == null) return;
             ProductByCategories.Clear();
-            var productCategories = _productCategoryService.GetAll(Category.Id);
-            foreach (var productCategory in productCategories)
+            //adding products that are in the category to the productsbycategories list
+            List<Product> productCategories = _productCategoryService.GetAll(Category.Id);
+            foreach (Product productCategory in productCategories)
                 ProductByCategories.Add(productCategory);
         }
 
         private void LoadAvailableProducts()
         {
+            if (Category == null) return;
             AvailableProducts.Clear();
+            //adding products that are not in the category and match the search text to the availableproducts list
             foreach (Product p in _productService.GetAll())
                 if (ProductByCategories.FirstOrDefault(g => g.Id == p.Id) == null && (searchText == "" || p.Name.ToLower().Contains(searchText.ToLower())))
                     AvailableProducts.Add(p);
@@ -63,8 +66,7 @@ namespace Grocery.App.ViewModels
 
         [RelayCommand]
         public void AddProduct(Product product)
-        {
-            if (Category == null || product == null) return;
+        { 
             _productCategoryService.AddProductToCategory(product, Category);
             Load();
         }
