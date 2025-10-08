@@ -27,10 +27,16 @@ namespace Grocery.Core.Services
             foreach (ProductCatergory item in result)
             {
                 Product product = _productService.Get(item.ProductId);
-                if(product != null)
+                if (product != null)
                     products.Add(product);
             }
             return products;
+        }
+
+        public void AddProductToCategory(Product product, Category category)
+        {
+            if (product == null || category == null) return;
+            _productCategoryService.Add(product, category);
         }
     }
 }

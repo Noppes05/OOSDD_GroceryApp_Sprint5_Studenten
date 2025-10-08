@@ -27,5 +27,18 @@ namespace Grocery.Core.Data.Repositories
         {
             return productCategories.Where(pc => pc.CategoryId == id).ToList();
         }
+
+        public void Add(Product product, Category Category)
+        {
+            productCategories.Add(
+                new ProductCatergory(
+                        productCategories.Count + 1,
+                        Category.Name,
+                        Category.Id,
+                        product.Id
+                    )
+                );
+        
+        }
     }
 }

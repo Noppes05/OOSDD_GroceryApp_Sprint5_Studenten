@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grocery.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Grocery.Core.Interfaces.Repositories
     public interface IProductCategory
     {
         public List<Models.ProductCatergory> GetAll(int id);
+        public void Add(Product product, Category category);
 
     }
 }
