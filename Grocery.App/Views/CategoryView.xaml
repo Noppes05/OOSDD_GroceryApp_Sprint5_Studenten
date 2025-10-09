@@ -43,5 +43,9 @@ SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=Se
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
+        <CollectionView.EmptyView>
+            <Label Text="Er zijn geen categorieën gevonden." 
+                   HorizontalOptions="Center" VerticalOptions="Center" />
+        </CollectionView.EmptyView>
     </CollectionView>
 </ContentPage>
